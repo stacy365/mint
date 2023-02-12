@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="../comman/registerstyle.css">
+</head>
+<body>
+    <div class="container">
+        <div class="hwrapper">
+            <div class="title">Software Students </div>
+            <div class="searcher">
+                <input id="searchinput" type="text" > <button id="buttonsearch"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+        
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Full Name</span>
+                    <input id="nameBox" type="text" placeholder="Full Name" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Username</span>
+                    <input maxlength="5" id="usernameBox" type="text" placeholder="Username" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Id Number</span>
+                    <input id="idBox" type="text" placeholder="Id Number" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input id="emailBox" type="email" placeholder="Email" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Phone Number</span>
+                    <input id="phonenumberBox" type="text" placeholder="Phone Number" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">University</span>
+                    <input id="universityBox"type="text" placeholder="University" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Department</span>
+                    <input id="departmentBox" type="text" placeholder="Department" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Password</span>
+                    <input id="passwordBox" type="text" placeholder="Password" required>
+                </div>
+                <div class="gender-details">
+                    <span class="gender-title">Gender</span>
+                    <select id="genderBox">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+            </div>
+            </div>
+            
+            <div class="buttons">
+                <div class="buttonL">
+                    <button id="insertBtn">Add Student</button>
+                </div>
+                <div class="buttonL">
+                    <button id="editBtn">Save Edit</button>
+                </div>
+                <div class="buttonL">
+                    <button id="delBtn">Delete</button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDXMnSuh8qYjEeRT71xWMr17t1wU024Ffg",
+          authDomain: "network-student.firebaseapp.com",
+          projectId: "network-student",
+          storageBucket: "network-student.appspot.com",
+          messagingSenderId: "332142668758",
+          appId: "1:332142668758:web:1049bdc3cf0834a206d277"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        import {
+            getFirestore, doc, getDoc, setDoc,collection, addDoc, updateDoc,deleteDoc,deleteField} 
+        from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+        const db = getFirestore();
+
+
+        // let name = document.getElementById("nameBox");
+        // let username = document.getElementById("usernameBox");
+        // let email = document.getElementById("emailBox");
+        // let phone = document.getElementById("phonenumberBox");
+        // let uni = document.getElementById("universityBox");
+        // let dep = document.getElementById("departmentBox");
+        // let pass = document.getElementById("passwordBox")
+        // let sgender = document.getElementById("genderBox");
+        // let id = document.getElementById("idBox");
+
+        let ins = document.getElementById("insertBtn");
+        let search = document.getElementById("buttonsearch");
+        let edbtn = document.getElementById("editBtn");
+        let delbtn = document.getElementById("delBtn")
+
+        async function AddDocument_CustomID(){
+            var ref = doc(db, "Software_Student", nameBox.value );
+            const docRef = await setDoc(
+                ref, {
+                Name : nameBox.value,
+                User_name : usernameBox.value,
+                Id : idBox.value,
+                Email: emailBox.value,
+                Phone_Number:phonenumberBox.value,
+                University: universityBox.value,
+                Password: passwordBox.value,
+                Department : departmentBox.value,
+                Gender : genderBox.value
+
+                }
+            )
+            .then(()=>{
+                alert("stored");
+            })
+            .catch((error)=>{
+                alert("error")
+            })
+        }
+
+        async function editDocument(){
+            var ref = doc(db, "Software_Student", nameBox.value);
+            await updateDoc(
+                ref, {
+                Name : nameBox.value,
+                User_name : usernameBox.value,
+                Id : idBox.value,
+                Email: emailBox.value,
+                Phone_Number:phonenumberBox.value,
+                University: universityBox.value,
+                Password: passwordBox.value,
+                Department : departmentBox.value,
+                Gender : genderBox.value
+
+                }
+            )
+            .then(()=>{
+                alert("stored");
+            })
+            .catch((error)=>{
+                alert("error")
+            })
+        }
+
+        //     async function GetADocument(){
+        //     var ref = doc(db,"Software_Student", nameBox.value);
+        //     const docSnap = await getDoc(ref);
+
+        //     if(docSnap.exists()){
+        //         nameBox.value = docSnap.data().Name;
+        //         usernameBox.value = docSnap.data().User_name;
+        //         idBox.value = docSnap.data().Id;
+        //         emailBox.value = docSnap.data().Email;
+        //         phonenumberBox.value = docSnap.data().Phone_Number;
+        //         universityBox.value = docSnap.data().University;
+        //         passwordBox.value = docSnap.data().password;
+        //         departmentBox.value = docSnap.data().Department;
+        //         genderBox.value = docSnap.data().Gender;
+        //     }
+        //     else{
+        //         alert("No such data");
+        //     }
+        // }
+
+        async function deleteDocument(){
+            var ref = doc(db, "Software_Student", nameBox.value);
+            const docSnap=  await getDoc(ref)
+
+            if(!docSnap.exists()){
+                alert("Document does not exist");
+                return;
+            }
+
+            await deleteDoc(ref)
+            .then(()=>{
+                alert("data deleted successfully");
+                nameBox.value = " ";
+                usernameBox.value = " ";
+                idBox.value = " ";
+                emailBox.value = " ";
+                phonenumberBox.value = " ";
+                universityBox.value = " ";
+                passwordBox.value = " ";
+                departmentBox.value = " ";
+                searchinput.value = " ";
+            })
+            .catch((error)=>{
+                alert("Unsuccessful operation:" + error);
+            })
+        }
+
+        async function GetBySearch(){
+            var ref = doc(db,"Software_Student", searchinput.value);
+            const docSnap = await getDoc(ref);
+            
+            if(docSnap.exists()){
+                nameBox.value = docSnap.data().Name;
+                usernameBox.value = docSnap.data().User_name;
+                idBox.value = docSnap.data().Id;
+                emailBox.value = docSnap.data().Email;
+                phonenumberBox.value = docSnap.data().Phone_Number;
+                universityBox.value = docSnap.data().University;
+                passwordBox.value = docSnap.data().Password;
+                departmentBox.value = docSnap.data().Department;
+                genderBox.value = docSnap.data().Gender;
+            }
+            else{
+                alert("No such data");
+            }
+        }
+        search.addEventListener("click", GetBySearch);
+        edbtn.addEventListener("click", editDocument);
+        ins.addEventListener("click",AddDocument_CustomID);
+        delbtn.addEventListener("click", deleteDocument);
+        
+
+      </script>
+</body>
+</html>

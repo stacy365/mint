@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+body{
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #cea135;
+}
+.container{
+  max-width: 900px;
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+.container .title{
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+  padding-bottom:28px;
+}
+.user-details{
+  display: grid;
+  grid-template-columns: 5fr 5fr;
+}
+.content form .user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+form .user-details .input-box{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+form .input-box span.details{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.user-details .input-box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+  border-color: #11122b;
+}
+ form .gender-details .gender-title{
+  font-size: 20px;
+  font-weight: 500;
+  padding-right: 20px;
+}
+#genderBox{
+  border: none;
+  font-size: 17px;
+}
+
+ 
+ #dot-1:checked ~ .category label .one,
+ #dot-2:checked ~ .category label .two,
+ #dot-3:checked ~ .category label .three{
+   background: #9b59b6;
+   border-color: #d9d9d9;
+ }
+ form input[type="radio"]{
+   display: none;
+ }
+ form .button{
+   height: 45px;
+   margin: 35px 0
+ }
+ form .button input{
+   height: 100%;
+   width: 25%;
+   border-radius: 5px;
+   border: none;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: 0.5s;
+   background: linear-gradient(135deg, #cea135, #cea135);
+ }
+ form .button input:focus{
+  background: linear-gradient(-135deg, #cea135);
+  box-shadow: 0px 19px 31px -12px rgba(0,0,0,0.71);
+-webkit-box-shadow: 0px 19px 31px -12px rgba(0,0,0,0.71);
+-moz-box-shadow: 0px 19px 31px -12px rgba(0,0,0,0.71);
+  }
+ @media(max-width: 584px){
+ .container{
+  max-width: 100%;
+}
+form .user-details .input-box{
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  form .category{
+    width: 100%;
+  }
+  .content form .user-details{
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar{
+    width: 5px;
+  }
+  }
+  @media(max-width: 459px){
+  .container .content .category{
+    flex-direction: column;
+  }
+}
+.input-box.error input {
+  border-color: #ff3860;
+}
+.buttonL > #insertBtn{
+  outline: none;
+  padding: 10px;
+  font-size: 1.1em;
+  font-weight: 500;
+  background-color: #cea135;
+  color:#fff;
+  transition: 0.3s;
+  height: 30px;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    width: 180px;
+    padding: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.buttonL > #editBtn{
+  outline: none;
+  padding: 10px;
+  font-size: 1.1em;
+  font-weight: 500;
+  background-color: #cea135;
+  color:#fff;
+  transition: 0.3s;
+  height: 30px;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    width: 180px;
+    padding: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.buttonL > #delBtn{
+  outline: none;
+  padding: 10px;
+  font-size: 1.1em;
+  font-weight: 500;
+  background-color: #cea135;
+  color:#fff;
+  transition: 0.3s;
+  height: 30px;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    width: 180px;
+    padding: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.buttons{
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.hwrapper{
+  display: flex;
+  justify-content: space-between;
+}
+#buttonsearch{
+    background-color: white;
+    border: none;
+    font-size: 1.3rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+#searchinput{
+    height: 30px;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    width: 280px;
+    padding: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.searcher > input > #searchinput:active{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+#buttonsearch:active{
+  box-shadow: 0px 19px 31px -12px rgba(0,0,0,0.71);
+-webkit-box-shadow: 0px 19px 31px -12px rgba(0,0,0,0.71);
+-moz-box-shadow: 0px 19px 31px -12px rgba(0,0,0,0.71);
+}
+#insertBtn:active{
+  box-shadow: 1px 2px 19px -6px black;
+}
+#editBtn:active{
+  box-shadow: 1px 2px 19px -6px black;
+}
+#delBtn:active{
+  box-shadow: 1px 2px 19px -6px black;
+}
+
+
+
